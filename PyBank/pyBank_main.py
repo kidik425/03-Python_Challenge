@@ -39,6 +39,7 @@ with open(csvPath,'r') as csvFile:
 
         #Get profit/loss change for the current period
         if totMnth != 1:
+            mnth = row[0]
             curChange = (curPL - prevPL)
             totChange += curChange
             totMnthAvgDenom += 1
@@ -46,9 +47,10 @@ with open(csvPath,'r') as csvFile:
             #look for max and min changes
             if curChange > maxInc:
                 maxInc = curChange
-            
+                maxIMnth = mnth
             if curChange < maxDec:
                 maxDec = curChange
+                maxDMnth = mnth
 
             #set prevChange to curChange for next evalution in loop
             prevChange = curChange
@@ -58,11 +60,17 @@ with open(csvPath,'r') as csvFile:
 
 
     avgChange = (totChange)/(totMnthAvgDenom)
-    print(" ")
-    print("Financial Analysis")
-    print("-----------------------")
-    print(f"Total Months: {totMnth}")
-    print(f"Total: ${tot:,}")
-    print(f"Average Change: ${avgChange:,.2f}")
-    print(f"Greatest Increase in Profits: (${maxInc:,})")
-    print(f"Greatest Decrease in Profits: (${maxDec:,})")
+
+output = (   
+    f"Financial Analysis\n"
+    f"-----------------------\n"
+    f"Total Months: {totMnth}\n"
+    f"Total: ${tot:,}\n"
+    f"Average Change: ${avgChange:,.2f}\n"
+    f"Greatest Increase in Profits: {maxIMnth} (${maxInc:,})\n"
+    f"Greatest Decrease in Profits: {maxDMnth} (${maxDec:,})\n"
+)
+
+print(output)
+with open(fileOutput, "w", newline="") as textFile:
+    textFile.write(output)
