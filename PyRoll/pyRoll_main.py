@@ -39,7 +39,6 @@ with open(csvPath,'r') as csvFile:
 
 #capture all output into a variable that will be used later for both output to screen and file
 #output variable will be appended to itself a few times to allow looping to work
-
 output = (    
     f"\nElection Results\n"
     f"-----------------------\n"
