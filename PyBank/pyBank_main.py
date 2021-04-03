@@ -1,7 +1,5 @@
 #declare and initiate variables
 import csv
-import tkinter as tk
-from tkinter import filedialog
 
 #declare totals variables
 tot = 0
@@ -20,9 +18,7 @@ avgChange = 0 #user to get the ave of the total change
 maxInc = 0
 maxDec = 0
 
-root = tk.Tk()
-root.withdraw()
-
+#declare file paths
 csvPath =  'PyBank/Resources/budget_data.csv'
 fileOutput = 'PyBank/Analysis/budget_data.txt'
 with open(csvPath,'r') as csvFile:
