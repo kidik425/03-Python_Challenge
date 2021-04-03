@@ -1,5 +1,6 @@
 #declare and initiate variables
 import csv
+import os
 
 #declare totals variables
 tot = 0
@@ -16,8 +17,8 @@ maxDec = 0
 
 candDict = dict()
 
-csvPath =  'PyRoll/Resources/election_data.csv'
-fileOutput = 'PyRoll/Analysis/election_date_output.txt'
+csvPath =  os.path.join('Resources','election_data.csv')
+fileOutput = os.path.join('Analysis','election_date_output.txt')
 
 with open(csvPath,'r') as csvFile:
 

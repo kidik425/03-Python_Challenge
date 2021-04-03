@@ -1,5 +1,6 @@
 #declare and initiate variables
 import csv
+import os
 
 #declare totals variables
 tot = 0
@@ -19,8 +20,9 @@ maxInc = 0
 maxDec = 0
 
 #declare file paths
-csvPath =  'PyBank/Resources/budget_data.csv'
-fileOutput = 'PyBank/Analysis/budget_data.txt'
+csvPath =  os.path.join('Resources','budget_data.csv')
+fileOutput = os.path.join('Analysis','budget_data.txt')
+
 with open(csvPath,'r') as csvFile:
 
     csvReader = csv.reader(csvFile, delimiter = ',')
