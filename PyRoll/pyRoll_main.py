@@ -37,6 +37,9 @@ with open(csvPath,'r') as csvFile:
 
     winner = max(candDict, key=candDict.get)
 
+#capture all output into a variable that will be used later for both output to screen and file
+#output variable will be appended to itself a few times to allow looping to work
+
 output = (    
     f"\nElection Results\n"
     f"-----------------------\n"
@@ -52,6 +55,8 @@ output += (
     f"-----------------------"
     )
 
+
+#print to screen and file
 print(output)
 with open(fileOutput, "w", newline="") as textFile:
     textFile.write(output)

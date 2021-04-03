@@ -1,5 +1,7 @@
 #declare and initiate variables
 import csv
+import tkinter as tk
+from tkinter import filedialog
 
 #declare totals variables
 tot = 0
@@ -18,7 +20,10 @@ avgChange = 0 #user to get the ave of the total change
 maxInc = 0
 maxDec = 0
 
-csvPath =  './PyBank/Resources/budget_data.csv'
+root = tk.Tk()
+root.withdraw()
+
+csvPath =  'PyBank/Resources/budget_data.csv'
 fileOutput = 'PyBank/Analysis/budget_data.txt'
 with open(csvPath,'r') as csvFile:
 
@@ -61,6 +66,8 @@ with open(csvPath,'r') as csvFile:
 
     avgChange = (totChange)/(totMnthAvgDenom)
 
+#capture all output into a variable that will be used later for both output to screen and file
+
 output = (   
     f"Financial Analysis\n"
     f"-----------------------\n"
@@ -71,6 +78,7 @@ output = (
     f"Greatest Decrease in Profits: {maxDMnth} (${maxDec:,})\n"
 )
 
+#print to screen and file
 print(output)
 with open(fileOutput, "w", newline="") as textFile:
     textFile.write(output)
